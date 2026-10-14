@@ -3,7 +3,9 @@
 A static web page that gives TDS students their verified Tangram arrangement and an
 officially signed completion token for the GA1 `q-visual-game-tangram` question.
 
-**Live page:** `https://<your-username>.github.io/<repo-name>/` (enable GitHub Pages after pushing)
+**Live page:** https://hypemonk.github.io/tangram-solver/
+
+**Repository:** https://github.com/HypeMonk/tangram-solver
 
 ## What it does
 
@@ -17,6 +19,15 @@ officially signed completion token for the GA1 `q-visual-game-tangram` question.
    game board itself uses — and displays the receipt only if the server confirms
    `invalid:false` and the arrangement's `match_key` equals the target's expected hash.
 5. The student copies the token into the exam answer box themselves.
+
+For the four targets without a saved answer, the page shows the assigned
+silhouette, a “We’re still solving this one” notice and a short guide to attempting
+it on the official board. It does not request or invent a token. Exact placement
+can require finer coordinates than the board’s normal drag grid.
+
+The redesigned page includes numbered pieces, target/solution tabs, collapsible
+state and placement details, light/dark themes, request retries, and copy fallbacks.
+Changing email clears stale results before another request.
 
 The server holds the signing key; this page only supplies verified geometry.
 The email is used solely for that attestation request and is never stored.
@@ -36,12 +47,17 @@ The page is generated — don't edit it by hand. From the project folder
 (`tangram-solver/`):
 
 ```sh
-node make-portal.mjs     # regenerates portal-site/index.html from solutions.json
+node make-portal.mjs     # verifies answers and regenerates portal-site/index.html
 ```
 
+Copy `portal-site/index.html` over this folder's `index.html`, then publish the
+updated file. The editable design lives in `portal-template.html` and the browser
+logic in `portal-app.js`; both are embedded by the generator.
+
 The build refuses to bundle any answer that doesn't pass the game's own
-exact-hash verification, so the page can never serve a wrong arrangement.
-Currently bundled: **96 of 100** targets.
+exact-hash verification. The page also checks the official response's email and
+target claims before enabling the token-copy button. The assignment remains the
+final judge of a submitted token. Currently bundled: **96 of 100** targets.
 
 ## Files
 
