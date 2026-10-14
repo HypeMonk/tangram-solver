@@ -20,10 +20,10 @@ officially signed completion token for the GA1 `q-visual-game-tangram` question.
    `invalid:false` and the arrangement's `match_key` equals the target's expected hash.
 5. The student copies the token into the exam answer box themselves.
 
-For the four targets without a saved answer, the page shows the assigned
-silhouette, a “We’re still solving this one” notice and a short guide to attempting
-it on the official board. It does not request or invent a token. Exact placement
-can require finer coordinates than the board’s normal drag grid.
+All **100 targets in the Sept 2026 GA1 pool now have verified arrangements**, including
+the four previously pending puzzles: tg-004, tg-060, tg-077 and tg-088. There is no
+manual-solving requirement for any target in this pool. The page retains a safe
+unavailable-answer fallback for future dataset changes.
 
 The redesigned page includes numbered pieces, target/solution tabs, collapsible
 state and placement details, light/dark themes, request retries, and copy fallbacks.
@@ -57,7 +57,7 @@ logic in `portal-app.js`; both are embedded by the generator.
 The build refuses to bundle any answer that doesn't pass the game's own
 exact-hash verification. The page also checks the official response's email and
 target claims before enabling the token-copy button. The assignment remains the
-final judge of a submitted token. Currently bundled: **96 of 100** targets.
+final judge of a submitted token. Currently bundled: **100 of 100** targets.
 
 ## Files
 
